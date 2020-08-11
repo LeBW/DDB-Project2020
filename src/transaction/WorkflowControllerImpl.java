@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
  * Description: toy implementation of the WC.  In the real
  * implementation, the WC should forward calls to either RM or TM,
  * instead of doing the things itself.
+ * by wjw
  */
 
 public class WorkflowControllerImpl
