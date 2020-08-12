@@ -6,4 +6,4 @@
 .vscode/
 
 # Java
-.class
+*.class
