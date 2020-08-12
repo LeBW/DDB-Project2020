@@ -29,7 +29,6 @@ public interface TransactionManager extends Remote {
 
     public void abort(int xid) throws RemoteException, InvalidTransactionException;
 
-    public void setDieTime(String time) throws RemoteException;
 
     public final static String TM_TRANSACTION_NUM_LOG_FILENAME = "data/tm_xidNum.log";
     public final static String TM_TRANSACTION_LOG_FILENAME = "data/tm_xids.log";
