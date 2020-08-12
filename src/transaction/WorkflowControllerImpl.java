@@ -1,58 +1,90 @@
 package transaction;
 
 import lockmgr.DeadlockException;
-
-import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
-import java.rmi.RemoteException;
-import java.io.*;
-import java.util.*;
+import transaction.InvalidIndexException;
+import transaction.InvalidTransactionException;
+import transaction.TransactionAbortedException;
 import transaction.models.*;
+import transaction.models.Reservation;
+import transaction.models.ResourceItem;
 
+import java.io.*;
+import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.*;
 
-/** 
+/**
  * Workflow Controller for the Distributed Travel Reservation System.
- * 
+ * <p>
  * Description: toy implementation of the WC.  In the real
  * implementation, the WC should forward calls to either RM or TM,
  * instead of doing the things itself.
  */
 
-public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject implements WorkflowController {
+public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject
+		implements WorkflowController {
 
-    protected int flightcounter, flightprice, carscounter, carsprice, roomscounter, roomsprice; 
-    protected int xidCounter;
-    
-    protected ResourceManager rmFlights = null;
-    protected ResourceManager rmRooms = null;
-    protected ResourceManager rmCars = null;
-    protected ResourceManager rmCustomers = null;
-    protected TransactionManager tm = null;
-
-	private Set<Integer> xids;
 	// If WC die, restart and load xids from "data/wc_xids.log"
 	private final static String WC_TRANSACTION_LOG_FILENAME = "data/wc_xids.log";
 
-    public static void main(String args[]) {
-	System.setSecurityManager(new SecurityManager());
+	private ResourceManager rmFlights;
+	private ResourceManager rmRooms;
+	private ResourceManager rmCars;
+	private ResourceManager rmCustomers;
+	private TransactionManager tm;
 
-	String rmiPort = System.getProperty("rmiPort");
-	if (rmiPort == null) {
-	    rmiPort = "";
-	} else if (!rmiPort.equals("")) {
-	    rmiPort = "//:" + rmiPort + "/";
+	// all active xids
+	private Set<Integer> xids;
+
+	public WorkflowControllerImpl() throws RemoteException {
+		this.rmFlights = null;
+		this.rmRooms = null;
+		this.rmCars = null;
+		this.rmCustomers = null;
+		this.tm = null;
+		this.xids = new HashSet<>();
+
+		// recover from die
+		this.recover();
+
+		while (!reconnect()) {
+			// would be better to sleep a while
+			try {
+				Thread.sleep(500);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
-	try {
-	    WorkflowControllerImpl obj = new WorkflowControllerImpl();
-	    Naming.rebind(rmiPort + WorkflowController.RMIName, obj);
-	    System.out.println("WC bound");
+	private void recover() {
+		Set<Integer> cacheXids = loadTransactionLogs();
+
+		if (cacheXids != null) {
+			this.xids = cacheXids;
+		}
 	}
-	catch (Exception e) {
-	    System.err.println("WC not bound:" + e);
-	    System.exit(1);
+
+	private Set<Integer> loadTransactionLogs() {
+		File xidLog = new File(WC_TRANSACTION_LOG_FILENAME);
+		ObjectInputStream oin = null;
+		try {
+			oin = new ObjectInputStream(new FileInputStream(xidLog));
+			return (HashSet<Integer>) oin.readObject();
+		} catch (Exception e) {
+			return null;
+		} finally {
+			try {
+				if (oin != null)
+					oin.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
-    }
 
 	private void storeTransactionLogs(Set<Integer> xids) {
 		File xidLog = new File(WC_TRANSACTION_LOG_FILENAME);
@@ -73,41 +105,20 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 			}
 		}
 	}
-    
-    public WorkflowControllerImpl() throws RemoteException {
-	flightcounter = 0;
-	flightprice = 0;
-	carscounter = 0;
-	carsprice = 0;
-	roomscounter = 0;
-	roomsprice = 0;
-	flightprice = 0;
 
-	xidCounter = 1;
-
-	while (!reconnect()) {
-		// would be better to sleep a while
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-    }
-
-
-    // TRANSACTION INTERFACE
-    public int start()	throws RemoteException {
+	// TRANSACTION INTERFACE
+	public int start() throws RemoteException {
+		// do not need synchronized, because tm.start() is synchronized, so xid is unique
 		int xid = tm.start();
 		this.xids.add(xid);
-		this.storeTransactionLogs(this.xids);
-		return xid;
-    }
 
-    public boolean commit(int xid)
-	throws RemoteException, 
-	       TransactionAbortedException, 
-	       InvalidTransactionException {
+		this.storeTransactionLogs(this.xids);
+
+		return xid;
+	}
+
+	public boolean commit(int xid)
+			throws RemoteException, TransactionAbortedException, InvalidTransactionException {
 		if (!this.xids.contains(xid)) {
 			throw new InvalidTransactionException(xid, "commit");
 		}
@@ -117,7 +128,8 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		this.storeTransactionLogs(this.xids);
 
 		return ret;
-    }
+	}
+
 	public void abort(int xid) throws RemoteException, InvalidTransactionException {
 		if (!this.xids.contains(xid)) {
 			throw new InvalidTransactionException(xid, "abort");
@@ -127,7 +139,6 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		this.xids.remove(xid);
 		this.storeTransactionLogs(this.xids);
 	}
-
 
 	// ADMINISTRATIVE INTERFACE
 	public boolean addFlight(int xid, String flightNum, int numSeats, int price)
@@ -143,9 +154,9 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		price = price < 0 ? 0 : price;
 
 		// find flight related to flightNum
-		ResourceItem resourceItem;
+		transaction.models.ResourceItem resourceItem;
 		try {
-			resourceItem = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
+			resourceItem = (ResourceItem) this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
 		} catch (DeadlockException e) {
 			this.abort(xid);
 			throw new TransactionAbortedException(xid, e.getMessage());
@@ -190,7 +201,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
+			transaction.models.ResourceItem resourceItem = (ResourceItem) this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
 			if (resourceItem == null) {
 				return false;
 			}
@@ -199,7 +210,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 			Collection reservations = this.rmCustomers.query(
 					xid,
 					ResourceManager.TableMameReservations,
-					Reservation.INDEX_CUSTNAME,
+					transaction.models.Reservation.INDEX_CUSTNAME,
 					flightNum);
 
 			// has reservations, stop delete
@@ -233,7 +244,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		price = price < 0 ? 0 : price;
 
 		// find hotel related to location
-		ResourceItem resourceItem;
+		transaction.models.ResourceItem resourceItem;
 		try {
 			resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
 		} catch (DeadlockException e) {
@@ -279,7 +290,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
+			transaction.models.ResourceItem resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
 			if (resourceItem == null) {
 				return false;
 			}
@@ -311,7 +322,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		price = price < 0 ? 0 : price;
 
 		// find car related to location
-		ResourceItem resourceItem;
+		transaction.models.ResourceItem resourceItem;
 		try {
 			resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
 		} catch (DeadlockException e) {
@@ -357,7 +368,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
+			transaction.models.ResourceItem resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
 
 			if (resourceItem == null) {
 				return false;
@@ -387,7 +398,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 			return false;
 		}
 
-		ResourceItem resourceItem;
+		transaction.models.ResourceItem resourceItem;
 		try {
 			resourceItem = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
 		} catch (DeadlockException e) {
@@ -421,7 +432,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
+			transaction.models.ResourceItem resourceItem = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
 			if (resourceItem == null) {
 				return false;
 			}
@@ -430,25 +441,25 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 			Collection reservations = this.rmCustomers.query(
 					xid,
 					ResourceManager.TableMameReservations,
-					Reservation.INDEX_CUSTNAME,
+					transaction.models.Reservation.INDEX_CUSTNAME,
 					custName
 			);
 
 			// cancel each reservation
 			for (Object obj : reservations) {
-				Reservation reservation = (Reservation) obj;
+				transaction.models.Reservation reservation = (transaction.models.Reservation) obj;
 				String resvKey = reservation.getResvKey();
 				int resvType = reservation.getResvType();
 
-				if (resvType == Reservation.RESERVATION_TYPE_FLIGHT) {
+				if (resvType == transaction.models.Reservation.RESERVATION_TYPE_FLIGHT) {
 					Flight flight = (Flight) this.rmFlights.query(xid, this.rmFlights.getID(), resvKey);
 					flight.cancelResv();
 					this.rmFlights.update(xid, this.rmFlights.getID(), resvKey, flight);
-				} else if (resvType == Reservation.RESERVATION_TYPE_HOTEL) {
+				} else if (resvType == transaction.models.Reservation.RESERVATION_TYPE_HOTEL) {
 					Hotel hotel = (Hotel) this.rmRooms.query(xid, this.rmRooms.getID(), resvKey);
 					hotel.cancelResv();
 					this.rmRooms.update(xid, this.rmRooms.getID(), resvKey, hotel);
-				} else if (resvType == Reservation.RESERVATION_TYPE_CAR) {
+				} else if (resvType == transaction.models.Reservation.RESERVATION_TYPE_CAR) {
 					Car car = (Car) this.rmCars.query(xid, this.rmCars.getID(), resvKey);
 					car.cancelResv();
 					this.rmCars.update(xid, this.rmCars.getID(), resvKey, car);
@@ -458,7 +469,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 			this.rmCustomers.delete(
 					xid,
 					ResourceManager.TableMameReservations,
-					Reservation.INDEX_CUSTNAME,
+					transaction.models.Reservation.INDEX_CUSTNAME,
 					custName);
 
 
@@ -474,7 +485,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 	}
 
 
-    // QUERY INTERFACE
+	// QUERY INTERFACE
 	public int queryFlight(int xid, String flightNum)
 			throws RemoteException, TransactionAbortedException, InvalidTransactionException {
 		if (!this.xids.contains(xid)) {
@@ -485,7 +496,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
+			transaction.models.ResourceItem resourceItem = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -507,7 +518,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
+			transaction.models.ResourceItem resourceItem = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -530,7 +541,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
+			transaction.models.ResourceItem resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -553,7 +564,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
+			transaction.models.ResourceItem resourceItem = this.rmRooms.query(xid, this.rmRooms.getID(), location);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -575,7 +586,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
+			transaction.models.ResourceItem resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -598,7 +609,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
+			transaction.models.ResourceItem resourceItem = this.rmCars.query(xid, this.rmCars.getID(), location);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -621,7 +632,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceItem = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
+			transaction.models.ResourceItem resourceItem = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
 			if (resourceItem == null) {
 				return -1;
 			}
@@ -629,23 +640,23 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 			Collection reservations = this.rmCustomers.query(
 					xid,
 					ResourceManager.TableMameReservations,
-					Reservation.INDEX_CUSTNAME,
+					transaction.models.Reservation.INDEX_CUSTNAME,
 					custName
 			);
 
 			int totalPrice = 0;
 			for (Object obj : reservations) {
-				Reservation reservation = (Reservation) obj;
+				transaction.models.Reservation reservation = (transaction.models.Reservation) obj;
 				String resvKey = reservation.getResvKey();
 				int resvType = reservation.getResvType();
 
-				if (resvType == Reservation.RESERVATION_TYPE_FLIGHT) {
+				if (resvType == transaction.models.Reservation.RESERVATION_TYPE_FLIGHT) {
 					Flight flight = (Flight) this.rmFlights.query(xid, this.rmFlights.getID(), resvKey);
 					totalPrice += flight.getPrice();
-				} else if (resvType == Reservation.RESERVATION_TYPE_HOTEL) {
+				} else if (resvType == transaction.models.Reservation.RESERVATION_TYPE_HOTEL) {
 					Hotel hotel = (Hotel) this.rmRooms.query(xid, this.rmRooms.getID(), resvKey);
 					totalPrice += hotel.getPrice();
-				} else if (resvType == Reservation.RESERVATION_TYPE_CAR) {
+				} else if (resvType == transaction.models.Reservation.RESERVATION_TYPE_CAR) {
 					Car car = (Car) this.rmCars.query(xid, this.rmCars.getID(), resvKey);
 					totalPrice += car.getPrice();
 				}
@@ -673,11 +684,11 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
+			transaction.models.ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
 			if (resourceCustomer == null) {
 				return false;
 			}
-			ResourceItem resourceItemFlight = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
+			transaction.models.ResourceItem resourceItemFlight = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
 			if (resourceItemFlight == null) {
 				return false;
 			}
@@ -689,7 +700,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 
 			this.rmFlights.update(xid, this.rmFlights.getID(), flightNum, flight);
 
-			Reservation reservation = new Reservation(custName, Reservation.RESERVATION_TYPE_FLIGHT, flightNum);
+			transaction.models.Reservation reservation = new transaction.models.Reservation(custName, transaction.models.Reservation.RESERVATION_TYPE_FLIGHT, flightNum);
 			return this.rmCustomers.insert(xid, ResourceManager.TableMameReservations, reservation);
 		} catch (DeadlockException e) {
 			this.abort(xid);
@@ -708,11 +719,11 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
+			transaction.models.ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
 			if (resourceCustomer == null) {
 				return false;
 			}
-			ResourceItem resourceItemCar = this.rmCars.query(xid, this.rmCars.getID(), location);
+			transaction.models.ResourceItem resourceItemCar = this.rmCars.query(xid, this.rmCars.getID(), location);
 			if (resourceItemCar == null) {
 				return false;
 			}
@@ -724,7 +735,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 
 			this.rmCars.update(xid, this.rmCars.getID(), location, car);
 
-			Reservation reservation = new Reservation(custName, Reservation.RESERVATION_TYPE_CAR, location);
+			transaction.models.Reservation reservation = new transaction.models.Reservation(custName, transaction.models.Reservation.RESERVATION_TYPE_CAR, location);
 			return this.rmCustomers.insert(xid, ResourceManager.TableMameReservations, reservation);
 		} catch (DeadlockException e) {
 			this.abort(xid);
@@ -743,11 +754,11 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 
 		try {
-			ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
+			transaction.models.ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
 			if (resourceCustomer == null) {
 				return false;
 			}
-			ResourceItem resourceItemRoom = this.rmRooms.query(xid, this.rmRooms.getID(), location);
+			transaction.models.ResourceItem resourceItemRoom = this.rmRooms.query(xid, this.rmRooms.getID(), location);
 			if (resourceItemRoom == null) {
 				return false;
 			}
@@ -759,7 +770,7 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 
 			this.rmRooms.update(xid, this.rmRooms.getID(), location, hotel);
 
-			Reservation reservation = new Reservation(custName, Reservation.RESERVATION_TYPE_HOTEL, location);
+			transaction.models.Reservation reservation = new transaction.models.Reservation(custName, Reservation.RESERVATION_TYPE_HOTEL, location);
 			return this.rmCustomers.insert(xid, ResourceManager.TableMameReservations, reservation);
 		} catch (DeadlockException e) {
 			this.abort(xid);
@@ -767,7 +778,86 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		}
 	}
 
-    // TECHNICAL/TESTING INTERFACE
+	public boolean reserveItinerary(int xid, String custName, List flightNumList, String location, boolean needCar, boolean needRoom)
+			throws RemoteException, TransactionAbortedException, InvalidTransactionException {
+		if (!this.xids.contains(xid)) {
+			throw new InvalidTransactionException(xid, "reserveItinerary");
+		}
+
+		if (custName == null || location == null || flightNumList == null) {
+			return false;
+		}
+
+		try {
+			transaction.models.ResourceItem resourceCustomer = this.rmCustomers.query(xid, this.rmCustomers.getID(), custName);
+			if (resourceCustomer == null) {
+				return false;
+			}
+
+			List<String> flights = new ArrayList<>();
+			for (Object obj : flightNumList) {
+				String flightNum = (String) obj;
+				transaction.models.ResourceItem resourceFlight = this.rmFlights.query(xid, this.rmFlights.getID(), flightNum);
+				if (resourceFlight == null) {
+					return false;
+				}
+
+				Flight flight = (Flight) resourceFlight;
+				if (flight.getNumAvail() < 1) {
+					return false;
+				}
+				flights.add(flightNum);
+			}
+
+			if (needCar) {
+				transaction.models.ResourceItem resourceCar = this.rmCars.query(xid, this.rmCars.getID(), location);
+				if (resourceCar == null) {
+					return false;
+				}
+
+				Car car = (Car) resourceCar;
+				if (car.getNumAvail() < 1) {
+					return false;
+				}
+			}
+
+			if (needRoom) {
+				ResourceItem resourceRoom = this.rmRooms.query(xid, this.rmRooms.getID(), location);
+				if (resourceRoom == null) {
+					return false;
+				}
+
+				Hotel hotel = (Hotel) resourceRoom;
+				if (hotel.getNumAvail() < 1) {
+					return false;
+				}
+			}
+
+			for (String flightNum : flights) {
+				boolean ret = this.reserveFlight(xid, custName, flightNum);
+				if (!ret) {
+					return false;
+				}
+			}
+
+			if (needCar) {
+				boolean ret = this.reserveCar(xid, custName, location);
+				if (!ret) {
+					return false;
+				}
+			}
+
+			if (needRoom) {
+				return this.reserveRoom(xid, custName, location);
+			}
+
+			return true;
+		} catch (DeadlockException e) {
+			this.abort(xid);
+			throw new TransactionAbortedException(xid, e.getMessage());
+		}
+	}
+
 	// TECHNICAL/TESTING INTERFACE
 	public boolean reconnect() throws RemoteException {
 		String rmiPort = System.getProperty("rmiPort");
@@ -807,7 +897,6 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 
 		return false;
 	}
-
 
 	public boolean dieNow(String who) throws RemoteException {
 		if (who.equals(TransactionManager.RMIName) || who.equals("ALL")) {
@@ -910,4 +999,20 @@ public class WorkflowControllerImpl extends java.rmi.server.UnicastRemoteObject 
 		return this.dieRMIWhen(who, "BeforeAbort");
 	}
 
+	public static void main(String[] args) {
+		System.setSecurityManager(new SecurityManager());
+
+		String rmiPort = System.getProperty("rmiPort");
+		rmiPort = Utils.getOriginRmiport(rmiPort);
+
+		try {
+			WorkflowControllerImpl obj = new WorkflowControllerImpl();
+			Registry registry = LocateRegistry.getRegistry(Utils.getHostname(), 3345, Socket::new);
+			registry.rebind(rmiPort + WorkflowController.RMIName, obj);
+			System.out.println("WC bound");
+		} catch (Exception e) {
+			System.err.println("WC not bound:" + e);
+			System.exit(1);
+		}
+	}
 }
