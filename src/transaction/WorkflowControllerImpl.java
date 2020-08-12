@@ -7,6 +7,7 @@ import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.io.*;
 import java.util.*;
+import transaction.models.*;
 
 
 /** 
