@@ -17,7 +17,7 @@ public interface TransactionManager extends Remote {
 
     public void ping() throws RemoteException;
     
-	public void enlist(int xid, ResourceManager rm) throws RemoteException;
+	public void enlist(int xid, ResourceManager rm) throws RemoteException, InvalidTransactionException;
 
 	
     /** The RMI name a TransactionManager binds to. */
@@ -30,5 +30,9 @@ public interface TransactionManager extends Remote {
     public void abort(int xid) throws RemoteException, InvalidTransactionException;
 
     public void setDieTime(String time) throws RemoteException;
+
+    public final static String TM_TRANSACTION_NUM_LOG_FILENAME = "data/tm_xidNum.log";
+    public final static String TM_TRANSACTION_LOG_FILENAME = "data/tm_xids.log";
+    public final static String TM_TRANSACTION_RMs_LOG_FILENAME = "data/tm_xidRMs.log";
 
 }
