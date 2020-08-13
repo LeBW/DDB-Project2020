@@ -1,6 +1,6 @@
 package transaction.models;
 
-import transaction.exceptions.InvalidIndexException;
+import transaction.InvalidIndexException;
 
 import java.io.Serializable;
 

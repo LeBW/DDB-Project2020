@@ -45,7 +45,9 @@ public class TransactionManagerImpl extends java.rmi.server.UnicastRemoteObject 
 	private Map<Integer, String> xidStatusMap;
 
 	private String dieTime;
-
+    public void setDieTime(String dieTime) {
+        this.dieTime = dieTime;
+    }
 	public void ping() throws RemoteException {
 	}
 
@@ -274,7 +276,32 @@ public class TransactionManagerImpl extends java.rmi.server.UnicastRemoteObject 
 
 	@Override
 	public void abort(int xid) throws RemoteException, InvalidTransactionException {
-		// TODO Auto-generated method stub
+		if (!this.xidStatusMap.containsKey(xid)) {
+            throw new InvalidTransactionException(xid, "TM abort");
+        }
+
+        Set<ResourceManager> resourceManagers = this.enlistRMs.get(xid);
+        Set<ResourceManager> abortedRMs = new HashSet<>();
+        for (ResourceManager resourceManager : resourceManagers) {
+            try {
+                resourceManager.abort(xid);
+                abortedRMs.add(resourceManager);
+            } catch (Exception e) {
+//                e.printStackTrace();
+
+                // FdieRMBeforeAbort
+            }
+        }
+
+        synchronized (this.enlistRMs) {
+            this.enlistRMs.remove(xid);
+            this.storeToFile(TM_TRANSACTION_RMs_LOG_FILENAME, this.enlistRMs);
+        }
+
+        synchronized (this.xidStatusMap) {
+            this.xidStatusMap.remove(xid);
+            this.storeToFile(TM_TRANSACTION_LOG_FILENAME, this.xidStatusMap);
+        }
 
 	}
 
