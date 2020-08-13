@@ -45,7 +45,9 @@ public class TransactionManagerImpl extends java.rmi.server.UnicastRemoteObject 
 	private Map<Integer, String> xidStatusMap;
 
 	private String dieTime;
-
+    public void setDieTime(String dieTime) {
+        this.dieTime = dieTime;
+    }
 	public void ping() throws RemoteException {
 	}
 
