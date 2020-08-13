@@ -1,0 +1,309 @@
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights abort #1
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights abort #2
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMFlights abort #2
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want READ, someone has WRITE
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMFlights abort #3
+RMFlights unlock #3
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMFlights bound to TM
+RMFlights abort #2
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMFlights bound to TM
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMFlights bound to TM
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights abort #2
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+prepare store RMFlights #2 P_DB
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+prepare store RMFlights #2 P_DB
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true
+RMFlights unlock #2
+RMFlights bound to TM
+RMFlights bound to TM
+RMFlights bound
+RMFlights bound to TM
+prepare store RMFlights #1 P_DB
+Committing
+prepared RMFlights #1: true
+RMFlights unlock #1
+Want READ, someone has WRITE
+prepare store RMFlights #2 P_DB
+Committing
+prepared RMFlights #2: true

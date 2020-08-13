@@ -1,0 +1,279 @@
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars abort #1
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars abort #2
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+Want READ, someone has WRITE
+RMCars abort #3
+RMCars unlock #3
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMCars bound to TM
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+prepare store RMCars #2 P_DB
+RMCars abort #2
+abort delete RMCars #2 P_DB
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+prepare store RMCars #2 P_DB
+RMCars abort #2
+abort delete RMCars #2 P_DB
+RMCars unlock #2
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+prepare store RMCars #2 P_DB
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM
+prepare store RMCars #1 P_DB
+Committing
+prepared RMCars #1: true
+RMCars unlock #1
+prepare store RMCars #2 P_DB
+Committing
+prepared RMCars #2: true
+RMCars bound to TM
+RMCars P_CARS_RECOVER
+RMCars bound
+RMCars bound to TM
+RMCars bound to TM
+RMCars bound
+RMCars bound to TM

@@ -1,0 +1,746 @@
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+#1 abort: RMCars
+#1 abort: RMCustomers
+#1 abort: RMFlights
+#1 abort: RMRooms
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+#2 abort: RMCars
+#2 abort: RMFlights
+#2 abort: RMRooms
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMRooms #2
+commit RMCars #2
+commit RMRooms #2
+unlock RMCars #2
+unlock RMRooms #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCars #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCars #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+#2 abort: RMCustomers
+#2 abort: RMFlights
+#2 abort: RMRooms
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMCustomers #2
+commit RMCars #2
+commit RMCustomers #2
+unlock RMCars #2
+unlock RMCustomers #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM start
+prepare RMRooms #2
+commit RMRooms #2
+unlock RMRooms #2
+prepare RMCars #1
+prepare RMFlights #1
+commit RMCars #1
+commit RMFlights #1
+unlock RMCars #1
+unlock RMFlights #1
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM start
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM start
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM start
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM start
+#3 abort: RMCars
+#3 abort: RMCustomers
+#3 abort: RMFlights
+#3 abort: RMRooms
+prepare RMCars #2
+commit RMCars #2
+unlock RMCars #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+prepare RMCars #2
+RMCars prepare TransactionAbortedException: The transaction 2 aborted:TransactionAbortedException
+#2 abort: RMCars
+#2 abort: RMCustomers
+#2 abort: RMFlights
+#2 abort: RMRooms
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+prepare RMCars #2
+prepare RMCustomers #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCars #2
+commit RMCustomers #2
+commit RMFlights #2
+commit RMRooms #2
+unlock RMCars #2
+unlock RMCustomers #2
+unlock RMFlights #2
+unlock RMRooms #2
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+#2 abort: RMFlights
+#2 abort: RMRooms
+abort exception: Connection refused to host: 127.0.1.1; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMFlights #2
+RMFlights prepare RemoteException: Error unmarshaling return header; nested exception is: 
+	java.io.EOFException
+#2 abort: RMCars
+#2 abort: RMFlights
+abort exception: Connection refused to host: 127.0.1.1; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+#2 abort: RMRooms
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMFlights #2
+RMFlights prepare RemoteException: Error unmarshaling return header; nested exception is: 
+	java.io.EOFException
+#2 abort: RMCars
+#2 abort: RMFlights
+abort exception: Connection refused to host: 127.0.1.1; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+#2 abort: RMRooms
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMFlights #2
+prepare RMRooms #2
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCars #2
+commit RMFlights #2
+commit RMRooms #2
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMCars #1
+prepare RMCustomers #1
+prepare RMFlights #1
+prepare RMRooms #1
+commit RMCars #1
+commit RMCustomers #1
+commit RMFlights #1
+commit RMRooms #1
+unlock RMCars #1
+unlock RMCustomers #1
+unlock RMFlights #1
+unlock RMRooms #1
+TM start
+prepare RMCars #2
+prepare RMFlights #2
+prepare RMRooms #2
+commit RMCars #2
+RMCars commit exception: Error unmarshaling return header; nested exception is: 
+	java.io.EOFException
+commit RMFlights #2
+commit RMRooms #2
+RMRooms commit exception: Error unmarshaling return header; nested exception is: 
+	java.io.EOFException
+unlock RMCars #2
+RMCars unlock exception Connection refused to host: 127.0.1.1; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+unlock RMFlights #2
+unlock RMRooms #2
+RMRooms unlock exception Connection refused to host: 127.0.1.1; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+TM bound
+TM bound to RMFlights
+TM bound to RMRooms
+TM bound to RMCars
+TM bound to RMCustomers
+TM start
+prepare RMFlights #1
+commit RMFlights #1
+unlock RMFlights #1
+TM start
+TM start
+prepare RMFlights #2
+commit RMFlights #2

@@ -1,0 +1,294 @@
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms abort #1
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms abort #2
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMRooms abort #2
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+Want READ, someone has WRITE
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms abort #3
+RMRooms unlock #3
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms abort #2
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+Want WRITE, have READ, requesting lock upgrade
+Converting lock...done
+RMRooms bound to TM
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms abort #2
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+RMRooms abort #2
+RMRooms unlock #2
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+prepare store RMRooms #2 P_DB
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
+prepare store RMRooms #1 P_DB
+Committing
+prepared RMRooms #1: true
+RMRooms unlock #1
+prepare store RMRooms #2 P_DB
+Committing
+prepared RMRooms #2: true
+RMRooms bound to TM
+RMRooms P_HOTELS_RECOVER
+RMRooms bound
+RMRooms bound to TM
+RMRooms bound to TM
+RMRooms bound
+RMRooms bound to TM
