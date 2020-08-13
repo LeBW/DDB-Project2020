@@ -1,9 +1,0 @@
-# IntelliJ IDEA
-.idea/
-.iml
-
-# VSCode
-.vscode/
-
-# Java
-*.class
